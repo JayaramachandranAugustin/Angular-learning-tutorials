@@ -1,0 +1,52 @@
+/**
+ * 
+ */
+var app=angular.module("directive_tut5",[]);
+app.directive("enter",function(){
+	return{
+		restrict:"A",
+		scope:{},
+		controller:function($scope){
+			$scope.traffic=[];
+			this.stop=function(){
+				$scope.traffic.push("stop");
+			}
+			this.listen=function(){
+				$scope.traffic.push("listen");
+			}
+			this.start=function(){
+				$scope.traffic.push("start");
+			}
+		},
+		link:function(scope,element,attrs){
+			element.bind("mouseenter",function(){
+				console.log(scope.traffic);
+			})
+		}
+	}
+});
+
+app.directive("start",function(){
+	return{
+		require:"enter",
+		link:function(scope,element,attrs,enterCtrl){
+			enterCtrl.start();
+		}
+	}
+});
+app.directive("stop",function(){
+	return{
+		require:"enter",
+		link:function(scope,element,attrs,enterCtrl){
+			enterCtrl.stop();
+		}
+	}
+});
+app.directive("listen",function(){
+	return{
+		require:"enter",
+		link:function(scope,element,attrs,enterCtrl){
+			enterCtrl.listen();
+		}
+	}
+});

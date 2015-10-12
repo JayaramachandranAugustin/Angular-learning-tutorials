@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Isolating the scope of directive</title>
+<script type="text/javascript" src="../../../js/lib/angular.js"></script>
+<script type="text/javascript" src="../js/mainCtrl2.js"></script>
+</head>
+<body>
+<div ng-app="directive_tut1">
+<div ng-controller="firsttag">
+<displayname></displayname>
+</div>
+<div ng-controller="secondtag">
+<displayname></displayname>
+</div>
+<div ng-controller="commoncontroller">
+<commondirective detail="employee1"></commondirective>
+<commondirective detail="employee2"></commondirective>
+</div>
+</div>
+</body>
+</html>
